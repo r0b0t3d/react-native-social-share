@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-core.git",
-    "baseUrl": "https://github.com/github_account/react-native-core"
+    "url": "git+https://github.com/r0b0t3d/react-native-social-share",
+    "baseUrl": "https://github.com/r0b0t3d/react-native-social-share/tree/master/packages/core"
   },
   "keywords": [
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Tuan Luong",
+    "email": "tuanluong.it@gmail.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
