@@ -1,0 +1,35 @@
+{
+  "search.exclude": {
+    "ios/build": true,
+    "android/app/build": true
+  },
+  "editor.formatOnSave": false,
+  "editor.trimAutoWhitespace": true,
+  "editor.tabSize": 2,
+  "editor.rulers": [150],
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "files.exclude": {
+    "**/node_modules": false,
+    "**/android/app/build": true,
+    "**/ios/build": true
+  },
+  "files.insertFinalNewline": true
+}

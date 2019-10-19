@@ -1,0 +1,7 @@
+src/registerServiceWorker.js
+src/**/__tests__/**
+babel.config.js
+index.js
+node_modules/**
+ios/**
+android/**
