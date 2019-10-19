@@ -1,0 +1,19 @@
+{
+  "name": "@react-native-social-share/react-native-social-share",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r0b0t3d/react-native-social-share.git"
+  },
+  "author": "Tuan Luong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r0b0t3d/react-native-social-share/issues"
+  },
+  "homepage": "https://github.com/r0b0t3d/react-native-social-share#readme"
+}
