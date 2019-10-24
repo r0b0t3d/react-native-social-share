@@ -3,7 +3,7 @@
     "ios/build": true,
     "android/app/build": true
   },
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.trimAutoWhitespace": true,
   "editor.tabSize": 2,
   "editor.rulers": [150],

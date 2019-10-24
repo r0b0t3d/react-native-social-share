@@ -1,18 +1,18 @@
 {
-  "name": "@react-native-social-share/core",
+  "name": "@react-native-social-share/twitter",
   "title": "React Native Core",
   "version": "1.0.0",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
-    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/core/",
+    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/twitter/",
     "build": "rm -rf lib && tsc && yarn deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/r0b0t3d/react-native-social-share",
-    "baseUrl": "https://github.com/r0b0t3d/react-native-social-share/tree/master/packages/core"
+    "baseUrl": "https://github.com/r0b0t3d/react-native-social-share/tree/master/packages/twitter"
   },
   "keywords": [
     "react-native"
@@ -27,10 +27,6 @@
   "peerDependencies": {
     "react": "^16.8.1",
     "react-native": ">=0.59.0-rc.0 <1.0.x"
-  },
-  "optionalDependencies": {
-    "react-native-fbsdk": "^1.0.4",
-    "@react-native-social-share/twitter": "^1.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.5.0",
