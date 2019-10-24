@@ -1,28 +1,22 @@
-// @ts-ignore
-import { NativeModules } from 'react-native';
+import { SocialShare } from "./types";
 
-//import Twitter from '@react-native-social-share/twitter';
-// @ts-ignore
-let TwitterShare: any;
+let TwitterShare: any = null;
 try {
 	// @ts-ignore
-	TwitterShare = require('@react-native-social-share/twitter');
-} catch (error) {
-
-}
+	TwitterShare = require('@react-native-social-share/twitter').default;
+} catch (error) {}
 if (!TwitterShare) {
 	throw new Error('Your project need to install @react-native-social-share/twitter');
 }
 
-function shareLink(link: string, description: string) {
-	return TwitterShare.shareLink(link, description);
+class TwitterSocialShare implements SocialShare {
+	shareLink(link: string, description: string) {
+		return TwitterShare.shareLink(link, description);
+	}
+	
+	async shareVideo(localVideo: string) {
+		throw new Error('Not available');
+	}
 }
 
-async function shareVideo(localVideo: string) {
-  throw new Error('Not available');
-}
-
-export default {
-  shareLink,
-  shareVideo,
-};
+export default new TwitterSocialShare();

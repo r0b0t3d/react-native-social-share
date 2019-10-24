@@ -1,5 +1,8 @@
-//@ts-ignore
-const FBSDK = require('react-native-fbsdk');
+let FBSDK: any = null;
+try {
+  //@ts-ignore
+  FBSDK = require('react-native-fbsdk');
+} catch (error) {}
 if (!FBSDK) {
   throw new Error('Your project need to install react-native-fbsdk');
 }

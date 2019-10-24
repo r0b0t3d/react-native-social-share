@@ -1,25 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//import Twitter from '@react-native-social-share/twitter';
-// @ts-ignore
-let TwitterShare;
+let TwitterShare = null;
 try {
     // @ts-ignore
-    TwitterShare = require('@react-native-social-share/twitter');
+    TwitterShare = require('@react-native-social-share/twitter').default;
 }
-catch (error) {
-}
+catch (error) { }
 if (!TwitterShare) {
     throw new Error('Your project need to install @react-native-social-share/twitter');
 }
-function shareLink(link, description) {
-    return TwitterShare.shareLink(link, description);
+class TwitterSocialShare {
+    shareLink(link, description) {
+        return TwitterShare.shareLink(link, description);
+    }
+    async shareVideo(localVideo) {
+        throw new Error('Not available');
+    }
 }
-async function shareVideo(localVideo) {
-    throw new Error('Not available');
-}
-exports.default = {
-    shareLink,
-    shareVideo,
-};
+exports.default = new TwitterSocialShare();
 //# sourceMappingURL=twitter.js.map
