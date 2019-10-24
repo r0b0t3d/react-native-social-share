@@ -3,4 +3,10 @@ import { NativeModules } from 'react-native';
 
 const { Twitter } = NativeModules;
 
-export default Twitter;
+function shareLink(link: string, description: string) {
+  Twitter.shareLink({ link, description });
+
+}
+export default {
+  shareLink
+};

@@ -9,13 +9,5 @@ catch (error) { }
 if (!TwitterShare) {
     throw new Error('Your project need to install @react-native-social-share/twitter');
 }
-class TwitterSocialShare {
-    shareLink(link, description) {
-        return TwitterShare.shareLink(link, description);
-    }
-    async shareVideo(localVideo) {
-        throw new Error('Not available');
-    }
-}
-exports.default = new TwitterSocialShare();
+exports.default = TwitterShare;
 //# sourceMappingURL=twitter.js.map
