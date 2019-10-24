@@ -1,7 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+//import Twitter from '@react-native-social-share/twitter';
 // @ts-ignore
-const TwitterShare = require('@react-native-social-share/twitter');
+let TwitterShare;
+try {
+    // @ts-ignore
+    TwitterShare = require('@react-native-social-share/twitter');
+}
+catch (error) {
+}
 if (!TwitterShare) {
     throw new Error('Your project need to install @react-native-social-share/twitter');
 }

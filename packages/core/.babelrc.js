@@ -1,6 +1,7 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
+    "optional-require",
     [
       require.resolve('babel-plugin-module-resolver'),
       {

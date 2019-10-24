@@ -1,7 +1,17 @@
 // @ts-ignore
-const TwitterShare = require('@react-native-social-share/twitter');
+import { NativeModules } from 'react-native';
+
+//import Twitter from '@react-native-social-share/twitter';
+// @ts-ignore
+let TwitterShare: any;
+try {
+	// @ts-ignore
+	TwitterShare = require('@react-native-social-share/twitter');
+} catch (error) {
+
+}
 if (!TwitterShare) {
-  throw new Error('Your project need to install @react-native-social-share/twitter');
+	throw new Error('Your project need to install @react-native-social-share/twitter');
 }
 
 function shareLink(link: string, description: string) {
