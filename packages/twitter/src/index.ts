@@ -1,10 +1,10 @@
 // @ts-ignore
 import { NativeModules } from 'react-native';
 
-const { Twitter } = NativeModules;
+const { TwitterShare } = NativeModules;
 
 function shareLink(link: string, description: string) {
-  Twitter.shareLink({ link, description });
+  TwitterShare.shareLink({ link, description });
 
 }
 export default {
