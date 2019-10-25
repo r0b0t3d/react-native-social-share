@@ -1,5 +1,5 @@
 #import <React/RCTBridgeModule.h>
 
-@interface Twitter : NSObject <RCTBridgeModule>
+@interface TwitterShare : NSObject <RCTBridgeModule>
 
 @end
