@@ -18,11 +18,11 @@ async function shareLink(link, description) {
     };
     return ShareDialog.show(shareContent);
 }
-async function shareVideo(localVideo) {
+async function shareVideo(options) {
     const { ShareDialog } = FBSDK;
     const shareContent = {
         contentType: 'video',
-        video: { localUrl: localVideo },
+        video: { localUrl: options.assetId },
     };
     return ShareDialog.show(shareContent);
 }

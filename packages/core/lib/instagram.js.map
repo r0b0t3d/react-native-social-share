@@ -1,0 +1,1 @@
+{"version":3,"file":"instagram.js","sourceRoot":"","sources":["../src/instagram.ts"],"names":[],"mappings":";;AAAA,aAAa;AACb,+CAAuC;AAGvC,KAAK,UAAU,SAAS,CAAC,IAAY,EAAE,WAAmB;AAE1D,CAAC;AAED,KAAK,UAAU,UAAU,CAAC,QAAgB;IACxC,sBAAO,CAAC,OAAO,CAAC,wBAAwB,QAAQ,EAAE,CAAC,CAAA;AACrD,CAAC;AAED,kBAAe;IACb,SAAS;IACT,UAAU;CACX,CAAA"}

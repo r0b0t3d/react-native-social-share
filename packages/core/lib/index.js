@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 let Facebook;
 let Twitter;
+let Instagram;
 function getSocialProvider(provider) {
     if (provider === 'facebook') {
         if (!Facebook) {
@@ -16,6 +17,13 @@ function getSocialProvider(provider) {
             Twitter = require('./twitter').default;
         }
         return Twitter;
+    }
+    else if (provider === 'instagram') {
+        if (!Instagram) {
+            // @ts-ignore
+            Instagram = require('./instagram').default;
+        }
+        return Instagram;
     }
     return null;
 }
