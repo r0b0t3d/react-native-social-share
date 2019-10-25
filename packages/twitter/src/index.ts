@@ -4,7 +4,7 @@ import { NativeModules } from 'react-native';
 const { TwitterShare } = NativeModules;
 
 function shareLink(link: string, description: string) {
-  TwitterShare.shareLink({ link, description });
+  return TwitterShare.shareLink(link, description);
 }
 export default {
   shareLink,

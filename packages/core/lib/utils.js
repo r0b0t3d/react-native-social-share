@@ -6,8 +6,16 @@ function isAppInstalled(appIdentifier) {
     if (react_native_1.Platform.OS === 'android') {
     }
     else {
-        return react_native_1.Linking.canOpenURL(appIdentifier);
+        try {
+            return react_native_1.Linking.canOpenURL(appIdentifier);
+        }
+        catch (error) {
+            // @ts-ignore
+            console.warn(error.message);
+            return Promise.resolve(false);
+        }
     }
+    return Promise.resolve(false);
 }
 exports.isAppInstalled = isAppInstalled;
 function prepareAssetPath(assetPath) {

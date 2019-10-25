@@ -1,11 +1,18 @@
 // @ts-ignore
 import { Platform, Linking } from 'react-native';
 
-export function isAppInstalled(appIdentifier: string) {
+export function isAppInstalled(appIdentifier: string): Promise<boolean> {
   if (Platform.OS === 'android') {
   } else {
-    return Linking.canOpenURL(appIdentifier);
+    try {
+      return Linking.canOpenURL(appIdentifier);
+    } catch (error) {
+      // @ts-ignore
+      console.warn(error.message);
+      return Promise.resolve(false);
+    }
   }
+  return Promise.resolve(false);
 }
 
 export function prepareAssetPath(assetPath: string) {

@@ -1,14 +1,15 @@
 // @ts-ignore
-import { Linking, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { isAppInstalled } from './utils';
+import { SocialError } from './error';
 
 let InstagramShare: any = null;
 try {
   // @ts-ignore
-  InstagramShare = require('@react-native-social-share/twitter').default;
+  InstagramShare = require('@react-native-social-share/instagram').default;
 } catch (error) {}
 if (!InstagramShare) {
-  throw new Error('Your project need to install @react-native-social-share/twitter');
+  throw new Error('Your project need to install @react-native-social-share/instagram');
 }
 
 async function shareLink(link: string, description: string) {
@@ -20,9 +21,9 @@ async function shareVideo(videoUri: string) {
     android: '',
     ios: 'instagram://',
   });
-  const isInstagramInstalled = isAppInstalled(appIdentifier);
+  const isInstagramInstalled = await isAppInstalled(appIdentifier);
   if (!isInstagramInstalled) {
-    throw new Error('Instagram must be installed');
+    throw new SocialError('APP_NOT_INSTALLED', 'Instagram must be installed');
   }
 
   return InstagramShare.shareVideo(videoUri);
