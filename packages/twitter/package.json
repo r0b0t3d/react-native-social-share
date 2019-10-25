@@ -7,7 +7,16 @@
   "scripts": {
     "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/twitter/",
     "build": "rm -rf lib && tsc && yarn deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "eslint src/**/*.ts",
+    "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}' ",
+    "test": "jest --config jestconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "publish": "npm run prepare && npm run prepublishOnly"
   },
   "repository": {
     "type": "git",
