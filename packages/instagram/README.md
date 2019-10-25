@@ -35,6 +35,10 @@
 
 
 ## Setup
+### iOS
+**Custom URL Scheme**
+In order for your app to use Instagram's custom URL scheme, you mush whitelist the scheme by adding instagram:// to the LSApplicationQueriesSchemes key in your app's Info.plist.
+
 https://developers.facebook.com/docs/instagram/sharing-to-feed/
 
 ## Usage

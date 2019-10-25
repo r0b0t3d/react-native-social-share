@@ -5,6 +5,8 @@
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
+    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/core/",
+    "build": "rm -rf lib && tsc && yarn deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
