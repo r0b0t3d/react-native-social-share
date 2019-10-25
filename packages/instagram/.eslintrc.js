@@ -14,6 +14,7 @@ module.exports = {
       // e.g. "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/explicit-function-return-type": 'off',
-      "@typescript-eslint/prefer-interface": 'off'
+      "@typescript-eslint/prefer-interface": 'off',
+      "@typescript-eslint/ban-ts-ignore": 'off',
   },
 };

@@ -1,6 +1,6 @@
 {
-  "name": "react-native-instagram",
-  "title": "React Native Instagram",
+  "name": "@react-native-social-share/instagram",
+  "title": "React Native Instagram Share",
   "version": "1.0.0",
   "description": "TODO",
   "main": "lib/index.js",
