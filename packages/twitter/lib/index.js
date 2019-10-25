@@ -7,6 +7,6 @@ function shareLink(link, description) {
     TwitterShare.shareLink({ link, description });
 }
 exports.default = {
-    shareLink
+    shareLink,
 };
 //# sourceMappingURL=index.js.map

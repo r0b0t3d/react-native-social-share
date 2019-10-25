@@ -7,7 +7,16 @@
   "scripts": {
     "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/core/",
     "build": "rm -rf lib && tsc && yarn deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "eslint src/**/*.ts",
+    "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}' ",
+    "test": "jest --config jestconfig.json --passWithNoTests",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "publish": "npm run prepare && npm run prepublishOnly"
   },
   "repository": {
     "type": "git",
@@ -29,9 +38,18 @@
     "react-native": ">=0.59.0-rc.0 <1.0.x"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
-    "babel-plugin-optional-require": "^0.3.1",
+    "@typescript-eslint/parser": "^2.5.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
     "react": "^16.8.3",
-    "react-native": "^0.59.10"
+    "react-native": "^0.59.10",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4",
+    "babel-plugin-optional-require": "^0.3.1"
   }
 }
