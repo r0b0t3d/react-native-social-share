@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("./utils");
 let Facebook;
 let Twitter;
 let Instagram;
@@ -37,7 +38,7 @@ function shareLink(provider, link, description) {
 function shareVideo(provider, localVideo) {
     const socialShare = getSocialProvider(provider);
     if (socialShare) {
-        return socialShare.shareVideo(localVideo);
+        return socialShare.shareVideo(utils_1.prepareAssetPath(localVideo));
     }
     return Promise.resolve();
 }

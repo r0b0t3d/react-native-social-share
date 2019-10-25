@@ -24,4 +24,14 @@ public class SocialShareModule extends ReactContextBaseJavaModule {
         // TODO: Implement some actually useful functionality
         callback.invoke("Received numberArgument: " + numberArgument + " stringArgument: " + stringArgument);
     }
+
+    // public static boolean isPackageInstalled(String packagename, Context context) {
+    //     PackageManager pm = context.getPackageManager();
+    //     try {
+    //         pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+    //         return true;
+    //     } catch (PackageManager.NameNotFoundException e) {
+    //         return false;
+    //     }
+    // }
 }

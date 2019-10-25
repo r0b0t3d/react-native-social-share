@@ -1,4 +1,5 @@
 import { SocialProvider, SocialShare } from './types';
+import { prepareAssetPath } from './utils';
 
 let Facebook: SocialShare | null;
 let Twitter: SocialShare | null;
@@ -38,7 +39,7 @@ function shareLink(provider: SocialProvider, link: string, description: string) 
 function shareVideo(provider: SocialProvider, localVideo: string): Promise<void> {
   const socialShare = getSocialProvider(provider);
   if (socialShare) {
-    return socialShare.shareVideo(localVideo);
+    return socialShare.shareVideo(prepareAssetPath(localVideo));
   }
   return Promise.resolve();
 }

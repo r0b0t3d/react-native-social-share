@@ -2,9 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore
 const react_native_1 = require("react-native");
-async function shareLink(link, description) {
-}
+const utils_1 = require("./utils");
+async function shareLink(link, description) { }
 async function shareVideo(videoUri) {
+    const appIdentifier = react_native_1.Platform.select({
+        android: '',
+        ios: 'instagram://'
+    });
+    const isInstagramInstalled = utils_1.isAppInstalled(appIdentifier);
+    if (!isInstagramInstalled) {
+        throw new Error("Instagram must be installed");
+    }
     react_native_1.Linking.openURL(`instagram://media?id=${videoUri}`);
 }
 exports.default = {
