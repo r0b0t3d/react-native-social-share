@@ -2,6 +2,7 @@ import { SocialProvider, SocialShare } from './types';
 
 let Facebook: SocialShare | null;
 let Twitter: SocialShare | null;
+let Instagram: SocialShare | null;
 
 function getSocialProvider(provider: SocialProvider): SocialShare | null {
   if (provider === 'facebook') {
@@ -16,6 +17,12 @@ function getSocialProvider(provider: SocialProvider): SocialShare | null {
       Twitter = require('./twitter').default;
     }
     return Twitter;
+  } else if (provider === 'instagram') {
+    if (!Instagram) {
+      // @ts-ignore
+      Instagram = require('./instagram').default;
+    }
+    return Instagram;
   }
   return null;
 }

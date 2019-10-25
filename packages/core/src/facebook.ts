@@ -1,3 +1,5 @@
+import { ShareVideoOptions } from "./types";
+
 let FBSDK: any = null;
 try {
   //@ts-ignore
@@ -17,11 +19,11 @@ async function shareLink(link: string, description: string) {
   return ShareDialog.show(shareContent);
 }
 
-async function shareVideo(localVideo: string) {
+async function shareVideo(options: ShareVideoOptions) {
   const { ShareDialog } = FBSDK;
   const shareContent = {
     contentType: 'video',
-    video: { localUrl: localVideo },
+    video: { localUrl: options.assetId },
   };
   return ShareDialog.show(shareContent);
 }
