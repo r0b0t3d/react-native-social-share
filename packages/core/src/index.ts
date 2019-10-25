@@ -47,4 +47,4 @@ function shareVideo(provider: SocialProvider, localVideo: string): Promise<void>
 export default {
   shareLink,
   shareVideo,
-}
+};

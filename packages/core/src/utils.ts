@@ -3,7 +3,6 @@ import { Platform, Linking } from 'react-native';
 
 export function isAppInstalled(appIdentifier: string) {
   if (Platform.OS === 'android') {
-
   } else {
     return Linking.canOpenURL(appIdentifier);
   }
@@ -15,4 +14,3 @@ export function prepareAssetPath(assetPath: string) {
   }
   return assetPath;
 }
-

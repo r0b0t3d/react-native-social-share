@@ -1,4 +1,4 @@
-import { ShareVideoOptions } from "./types";
+import { ShareVideoOptions } from './types';
 
 let FBSDK: any = null;
 try {

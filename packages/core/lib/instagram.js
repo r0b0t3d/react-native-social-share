@@ -3,6 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore
 const react_native_1 = require("react-native");
 const utils_1 = require("./utils");
+let InstagramShare = null;
+try {
+    // @ts-ignore
+    InstagramShare = require('@react-native-social-share/twitter').default;
+}
+catch (error) { }
+if (!InstagramShare) {
+    throw new Error('Your project need to install @react-native-social-share/twitter');
+}
 async function shareLink(link, description) { }
 async function shareVideo(videoUri) {
     const appIdentifier = react_native_1.Platform.select({
@@ -13,7 +22,7 @@ async function shareVideo(videoUri) {
     if (!isInstagramInstalled) {
         throw new Error("Instagram must be installed");
     }
-    react_native_1.Linking.openURL(`instagram://media?id=${videoUri}`);
+    return InstagramShare.shareVideo(videoUri);
 }
 exports.default = {
     shareLink,
