@@ -1,7 +1,7 @@
 {
   "name": "@react-native-social-share/instagram",
   "title": "React Native Instagram Share",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
@@ -34,6 +34,7 @@
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
   "peerDependencies": {
+    "@react-native-social-share/utils": "*",
     "react": "^16.8.1",
     "react-native": ">=0.59.0-rc.0 <1.0.x"
   },

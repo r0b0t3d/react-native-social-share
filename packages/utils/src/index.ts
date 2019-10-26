@@ -3,7 +3,7 @@ import { NativeModules, Platform, Linking } from 'react-native';
 
 const { ShareUtils } = NativeModules;
 
-export function isAppInstalled(appIdentifier: string): Promise<boolean> {
+function isAppInstalled(appIdentifier: string): Promise<boolean> {
   if (Platform.OS === 'android') {
     return ShareUtils.isAppInstalled(appIdentifier);
   } else {
@@ -17,13 +17,16 @@ export function isAppInstalled(appIdentifier: string): Promise<boolean> {
   }
 }
 
-export function prepareAssetPath(assetPath: string) {
+function prepareAssetPath(assetPath: string) {
   if (Platform.OS === 'ios' && assetPath && assetPath.length >= 14 && assetPath.substring(0, 14) !== 'assets-library') {
     return `assets-library://asset/asset.mp4?id=${assetPath.split('/')[2]}&ext=mp4`;
   }
   return assetPath;
 }
 
-export default Utils;
-export * from './error';
+export default {
+  isAppInstalled,
+  prepareAssetPath,
+};
 
+export * from './error';
