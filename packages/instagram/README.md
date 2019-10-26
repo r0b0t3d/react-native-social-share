@@ -43,8 +43,8 @@ https://developers.facebook.com/docs/instagram/sharing-to-feed/
 
 ## Usage
 ```javascript
-import Instagram from 'react-native-instagram';
+import InstagramShare from 'react-native-instagram';
 
-// TODO: What to do with the module?
-Instagram;
+const videoUri = "";
+InstagramShare.shareVideo(videoUri);
 ```

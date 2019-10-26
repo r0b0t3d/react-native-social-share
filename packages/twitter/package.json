@@ -1,7 +1,7 @@
 {
   "name": "@react-native-social-share/twitter",
   "title": "React Native Core",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
@@ -52,6 +52,8 @@
     "typescript": "^3.6.4"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "android/**/*",
+    "ios/**/*"
   ]
 }

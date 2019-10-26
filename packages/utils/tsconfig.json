@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "lib": ["es6"],
+    "outDir": "lib",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2017",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "moduleResolution": "node",
+  },
+  "compileOnSave": true,
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "src/__tests__",
+    "src/__mocks__",
+    "**/*.spec.ts"
+  ]
+}

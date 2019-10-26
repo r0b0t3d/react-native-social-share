@@ -1,11 +1,13 @@
 // @ts-ignore
 import { NativeModules, Linking, Platform } from 'react-native';
 
-const { Instagram } = NativeModules;
+const { InstagramShare } = NativeModules;
 
 function shareVideo(videoUri: string) {
   if (Platform.OS === 'ios') {
-    Linking.openURL(`instagram://library?AssetPath=${videoUri}`);
+    return Linking.openURL(`instagram://library?AssetPath=${videoUri}`);
+  } else if (Platform.OS === 'android') {
+    return InstagramShare.shareVideo(videoUri);
   }
 }
 

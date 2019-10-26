@@ -1,11 +1,11 @@
 {
   "name": "@react-native-social-share/instagram",
   "title": "React Native Instagram Share",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
-    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/core/",
+    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/instagram/",
     "build": "rm -rf lib && tsc && yarn deploy",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint src/**/*.ts",
@@ -52,6 +52,8 @@
     "typescript": "^3.6.4"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "android/**/*",
+    "ios/**/*"
   ]
 }

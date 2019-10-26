@@ -1,11 +1,11 @@
 {
-  "name": "@react-native-social-share/core",
-  "title": "React Native Core",
-  "version": "1.0.6",
+  "name": "@react-native-social-share/utils",
+  "title": "React Native Share Utils",
+  "version": "1.0.2",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
-    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/core/",
+    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/utils/",
     "build": "rm -rf lib && tsc && yarn deploy",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint src/**/*.ts",
@@ -20,8 +20,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/r0b0t3d/react-native-social-share",
-    "baseUrl": "https://github.com/r0b0t3d/react-native-social-share/tree/master/packages/core"
+    "url": "git+https://github.com/github_account/react-native-instagram.git",
+    "baseUrl": "https://github.com/github_account/react-native-instagram"
   },
   "keywords": [
     "react-native"
@@ -41,13 +41,11 @@
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
-    "babel-plugin-optional-require": "^0.3.1",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
-    "prettier-eslint": "^9.0.0",
     "react": "^16.8.3",
     "react-native": "^0.59.10",
     "ts-jest": "^24.1.0",
