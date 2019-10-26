@@ -1,8 +1,11 @@
 // @ts-ignore
-import { Platform, Linking } from 'react-native';
+import { Platform, Linking, NativeModules } from 'react-native';
+
+const { SocialShare } = NativeModules;
 
 export function isAppInstalled(appIdentifier: string): Promise<boolean> {
   if (Platform.OS === 'android') {
+    return SocialShare.isAppInstalled(appIdentifier);
   } else {
     try {
       return Linking.canOpenURL(appIdentifier);

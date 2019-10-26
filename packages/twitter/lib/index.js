@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_native_1 = require("react-native");
 const { TwitterShare } = react_native_1.NativeModules;
 function shareLink(link, description) {
-    TwitterShare.shareLink({ link, description });
+    return TwitterShare.shareLink(link, description);
 }
 exports.default = {
     shareLink,
