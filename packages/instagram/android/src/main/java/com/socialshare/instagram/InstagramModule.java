@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.socialshare.instagram;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -16,7 +16,7 @@ public class InstagramModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "Instagram";
+        return "InstagramShare";
     }
 
     @ReactMethod

@@ -50,5 +50,8 @@
     "react-native": "^0.59.10",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }

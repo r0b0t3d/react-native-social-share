@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.socialshare.twitter;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -16,7 +16,7 @@ public class TwitterModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "Twitter";
+        return "TwitterShare";
     }
 
     @ReactMethod

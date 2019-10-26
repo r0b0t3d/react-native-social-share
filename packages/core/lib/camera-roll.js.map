@@ -1,1 +1,0 @@
-{"version":3,"file":"camera-roll.js","sourceRoot":"","sources":["../src/camera-roll.ts"],"names":[],"mappings":";;AAAA,IAAI,UAAU,GAAG,IAAI,CAAC;AAEtB,IAAI;IACF,aAAa;IACb,UAAU,GAAG,OAAO,CAAC,oCAAoC,CAAC,CAAC,OAAO,CAAC;CACpE;AAAC,OAAO,KAAK,EAAE,GAAE;AAElB,IAAI,CAAC,UAAU,EAAE;IACf,MAAM,IAAI,KAAK,CAAC,wDAAwD,CAAC,CAAC;CAC3E;AAED,kBAAe,UAAU,CAAC"}
