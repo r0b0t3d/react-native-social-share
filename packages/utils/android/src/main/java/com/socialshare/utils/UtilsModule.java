@@ -35,7 +35,7 @@ public class UtilsModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void uriForFile(String path, Promise promise) {
         Uri uriForFile = FileProvider.getUriForFile(getCurrentActivity(),
-                this.getReactApplicationContext().getPackageName() + ".provider", new File(path));
+                this.getReactApplicationContext().getPackageName() + "socialshare.provider", new File(path));
         promise.resolve(uriForFile.toString());
     }
 

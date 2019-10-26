@@ -1,5 +1,3 @@
-import { SocialShare } from './types';
-
 let TwitterShare: any = null;
 try {
   // @ts-ignore

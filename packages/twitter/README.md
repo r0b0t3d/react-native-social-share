@@ -82,6 +82,18 @@ In your app's `Info.plist`, add URL Schemes by adding code below after `<dict>`
 ```
 **NOTE:** Although the callback URL will not be requested by Twitter Kit in your app, it **must** be set to a valid URL for the app to work with the SDK.
 
+Android
+-------------------------------
+Add to AndroidManifest
+```
+<meta-data
+    android:name="com.twitter.sdk.android.CONSUMER_KEY"
+    android:value="consumerKey" />
+
+<meta-data
+    android:name="com.twitter.sdk.android.CONSUMER_SECRET"
+    android:value="consumerSecret" />
+```
 ## Usage
 ```javascript
 import TwitterShare from '@react-native-social-share/twitter';

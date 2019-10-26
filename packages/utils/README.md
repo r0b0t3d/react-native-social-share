@@ -33,7 +33,6 @@
       compile project(':react-native-utils')
   	```
 
-
 ## Usage
 ```javascript
 import Utils from 'react-native-utils';
