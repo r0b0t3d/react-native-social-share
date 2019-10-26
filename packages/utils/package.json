@@ -1,7 +1,7 @@
 {
   "name": "@react-native-social-share/utils",
   "title": "React Native Share Utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
