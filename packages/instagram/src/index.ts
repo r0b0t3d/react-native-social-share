@@ -1,5 +1,5 @@
 // @ts-ignore
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules, Platform, Linking } from 'react-native';
 import ShareUtils, { SocialError } from '@react-native-social-share/utils';
 const { InstagramShare } = NativeModules;
 
@@ -17,7 +17,11 @@ async function shareVideo(videoUri: string) {
     throw new SocialError('APP_NOT_INSTALLED', 'Instagram must be installed');
   }
 
-  return InstagramShare.shareVideo(videoUri);
+  if (Platform.OS === 'ios') {
+    return Linking.openURL(`instagram://library?AssetPath=${videoUri}`);
+  } else if (Platform.OS === 'android') {
+    return InstagramShare.shareVideo(videoUri);
+  }
 }
 
 export default {
