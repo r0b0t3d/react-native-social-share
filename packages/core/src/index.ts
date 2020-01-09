@@ -1,4 +1,4 @@
-import { SocialProvider, SocialShare } from './types';
+import { SocialProvider, SocialShare, ShareMediaOptions } from './types';
 import { prepareAssetPath } from './utils';
 
 let Facebook: SocialShare | null;
@@ -44,10 +44,10 @@ function shareVideo(provider: SocialProvider, localVideo: string): Promise<void>
   return Promise.resolve();
 }
 
-function sharePhoto(provider: SocialProvider, localUri: string, description?: string): Promise<void> {
+function sharePhoto(provider: SocialProvider, options: ShareMediaOptions): Promise<void> {
   const socialShare = getSocialProvider(provider);
   if (socialShare) {
-    return socialShare.sharePhoto(localUri, description);
+    return socialShare.sharePhoto(options);
   }
   return Promise.resolve();
 }

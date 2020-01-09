@@ -37,11 +37,15 @@ async function shareVideo(options: ShareMediaOptions) {
   return ShareDialog.show(shareContent);
 }
 
-async function sharePhoto(contentUrl: string, description?: string) {
+async function sharePhoto(options: ShareMediaOptions) {
   const { ShareDialog } = FBSDK;
   const shareContent = {
     contentType: 'photo',
-    photos: [{ imageUrl: contentUrl, userGenerated: true }],
+    photos: [{ imageUrl: options.localFile, userGenerated: true }],
+    commonParameters: {
+      peopleIds: options.peopleIds,
+      hashtag: options.hashtag,
+    }
   };
   ShareDialog.setMode('native');
   const isAppInstalled = await ShareUtils.isAppInstalled(appIdentifier);
