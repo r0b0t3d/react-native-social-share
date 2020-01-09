@@ -41,5 +41,5 @@ async function sharePhoto(options: any) {
 export default {
   shareLink,
   shareVideo,
-  sharePhoto
+  sharePhoto,
 };

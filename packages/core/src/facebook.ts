@@ -45,7 +45,7 @@ async function sharePhoto(options: ShareMediaOptions) {
     commonParameters: {
       peopleIds: options.peopleIds,
       hashtag: options.hashtag,
-    }
+    },
   };
   ShareDialog.setMode('native');
   const isAppInstalled = await ShareUtils.isAppInstalled(appIdentifier);
