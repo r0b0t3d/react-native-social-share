@@ -1,4 +1,4 @@
-export type ShareVideoOptions = {
+export type ShareMediaOptions = {
   localFile?: string;
   assetId?: string;
   album?: string;
@@ -7,6 +7,7 @@ export type ShareVideoOptions = {
 export interface SocialShare {
   shareLink(link: string, description: string): Promise<any>;
   shareVideo(videoUri: string): Promise<any>;
+  sharePhoto(photoUri: string, description?: string): Promise<any>;
 }
 
 export type SocialProvider = 'facebook' | 'twitter' | 'instagram';

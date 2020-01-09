@@ -44,7 +44,16 @@ function shareVideo(provider: SocialProvider, localVideo: string): Promise<void>
   return Promise.resolve();
 }
 
+function sharePhoto(provider: SocialProvider, localUri: string, description?: string): Promise<void> {
+  const socialShare = getSocialProvider(provider);
+  if (socialShare) {
+    return socialShare.sharePhoto(localUri, description);
+  }
+  return Promise.resolve();
+}
+
 export default {
   shareLink,
   shareVideo,
+  sharePhoto,
 };

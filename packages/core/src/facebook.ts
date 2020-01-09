@@ -1,4 +1,8 @@
-import { ShareVideoOptions } from './types';
+import { ShareMediaOptions } from './types';
+// @ts-ignore
+import { Platform } from 'react-native';
+// @ts-ignore
+import ShareUtils, { SocialError } from '@react-native-social-share/utils';
 
 let FBSDK: any = null;
 try {
@@ -8,6 +12,11 @@ try {
 if (!FBSDK) {
   throw new Error('Your project need to install react-native-fbsdk');
 }
+
+const appIdentifier = Platform.select({
+  android: 'com.facebook.katana',
+  ios: 'fbauth2://',
+});
 
 async function shareLink(link: string, description: string) {
   const { ShareDialog } = FBSDK;
@@ -19,7 +28,7 @@ async function shareLink(link: string, description: string) {
   return ShareDialog.show(shareContent);
 }
 
-async function shareVideo(options: ShareVideoOptions) {
+async function shareVideo(options: ShareMediaOptions) {
   const { ShareDialog } = FBSDK;
   const shareContent = {
     contentType: 'video',
@@ -28,7 +37,25 @@ async function shareVideo(options: ShareVideoOptions) {
   return ShareDialog.show(shareContent);
 }
 
+async function sharePhoto(contentUrl: string, description?: string) {
+  const { ShareDialog } = FBSDK;
+  const shareContent = {
+    contentType: 'photo',
+    photos: [{ imageUrl: contentUrl, userGenerated: true }],
+  };
+  ShareDialog.setMode('native');
+  const isAppInstalled = await ShareUtils.isAppInstalled(appIdentifier);
+  if (!isAppInstalled) {
+    throw new SocialError('APP_NOT_INSTALLED', 'Facebook app must be installed');
+  }
+  if (ShareDialog.canShow(shareContent)) {
+    return ShareDialog.show(shareContent);
+  }
+  throw new Error('Failed');
+}
+
 export default {
   shareLink,
   shareVideo,
+  sharePhoto,
 };
