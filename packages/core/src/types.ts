@@ -6,9 +6,16 @@ export type ShareMediaOptions = {
   peopleIds?: string[];
 };
 
+export type ShareLinkOptions = {
+  link: string;
+  description?: string;
+  hashtag?: string;
+  peopleIds?: string[];
+};
+
 export interface SocialShare {
-  shareLink(link: string, description: string): Promise<any>;
-  shareVideo(videoUri: string): Promise<any>;
+  shareLink(options: ShareLinkOptions): Promise<any>;
+  shareVideo(options: ShareMediaOptions): Promise<any>;
   sharePhoto(options: ShareMediaOptions): Promise<any>;
 }
 

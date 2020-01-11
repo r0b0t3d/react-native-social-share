@@ -1,4 +1,4 @@
-import { ShareMediaOptions } from './types';
+import { ShareMediaOptions, ShareLinkOptions } from './types';
 // @ts-ignore
 import { Platform } from 'react-native';
 // @ts-ignore
@@ -18,12 +18,16 @@ const appIdentifier = Platform.select({
   ios: 'fbauth2://',
 });
 
-async function shareLink(link: string, description: string) {
+async function shareLink(options: ShareLinkOptions) {
   const { ShareDialog } = FBSDK;
   const shareContent = {
     contentType: 'link',
-    contentUrl: link,
-    contentDescription: description,
+    contentUrl: options.link,
+    contentDescription: options.description,
+    commonParameters: {
+      peopleIds: options.peopleIds,
+      hashtag: options.hashtag,
+    },
   };
   return ShareDialog.show(shareContent);
 }

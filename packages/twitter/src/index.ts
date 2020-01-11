@@ -11,8 +11,8 @@ type ShareMediaOptions = {
   peopleIds?: string[];
 };
 
-function shareLink(link: string, description: string) {
-  return TwitterShare.shareLink(link, description);
+function shareLink(options: any) {
+  return TwitterShare.shareLink(options.link, options.description);
 }
 
 function sharePhoto(options: ShareMediaOptions) {

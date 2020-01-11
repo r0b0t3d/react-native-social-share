@@ -1,4 +1,4 @@
-import { SocialProvider, SocialShare, ShareMediaOptions } from './types';
+import { SocialProvider, SocialShare, ShareMediaOptions, ShareLinkOptions } from './types';
 import { prepareAssetPath } from './utils';
 
 let Facebook: SocialShare | null;
@@ -28,18 +28,21 @@ function getSocialProvider(provider: SocialProvider): SocialShare | null {
   return null;
 }
 
-function shareLink(provider: SocialProvider, link: string, description: string) {
+function shareLink(provider: SocialProvider, options: ShareLinkOptions) {
   const socialShare = getSocialProvider(provider);
   if (socialShare) {
-    return socialShare.shareLink(link, description);
+    return socialShare.shareLink(options);
   }
   return Promise.resolve();
 }
 
-function shareVideo(provider: SocialProvider, localVideo: string): Promise<void> {
+function shareVideo(provider: SocialProvider, options: ShareMediaOptions): Promise<void> {
   const socialShare = getSocialProvider(provider);
   if (socialShare) {
-    return socialShare.shareVideo(prepareAssetPath(localVideo));
+    return socialShare.shareVideo({
+      ...options,
+      localFile: prepareAssetPath(options.localFile),
+    });
   }
   return Promise.resolve();
 }
