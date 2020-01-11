@@ -1,5 +1,7 @@
 // @ts-ignore
-import { NativeModules } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
+// @ts-ignore
+import ShareUtils, { SocialError } from '@react-native-social-share/utils';
 
 const { TwitterShare } = NativeModules;
 
@@ -11,12 +13,25 @@ type ShareMediaOptions = {
   peopleIds?: string[];
 };
 
+const appIdentifier = Platform.select({
+  android: 'com.twitter.android',
+  ios: 'twitter://',
+});
+
 function shareLink(options: any) {
   return TwitterShare.shareLink(options.link, options.description);
 }
 
-function sharePhoto(options: ShareMediaOptions) {
-  return TwitterShare.sharePhoto(options.localFile, options.hashtag);
+async function sharePhoto(options: ShareMediaOptions) {
+  if (Platform.OS === 'android') {
+    const isAppInstalled = await ShareUtils.isAppInstalled(appIdentifier);
+    if (!isAppInstalled) {
+      throw new SocialError('APP_NOT_INSTALLED', 'Twitter must be installed');
+    }
+  }
+
+  const fileUri = await ShareUtils.uriForFile(options.localFile);
+  return TwitterShare.sharePhoto(fileUri, options.hashtag);
 }
 
 export default {

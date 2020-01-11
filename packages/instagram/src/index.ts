@@ -12,16 +12,17 @@ async function shareLink(link: string, description: string) {
   throw new Error('Not available');
 }
 
-async function shareVideo(videoUri: string) {
+async function shareVideo(options: any) {
   const isInstagramInstalled = await ShareUtils.isAppInstalled(appIdentifier);
   if (!isInstagramInstalled) {
     throw new SocialError('APP_NOT_INSTALLED', 'Instagram must be installed');
   }
 
   if (Platform.OS === 'ios') {
-    return Linking.openURL(`instagram://library?AssetPath=${videoUri}`);
+    return Linking.openURL(`instagram://library?AssetPath=${options.localFile}`);
   } else if (Platform.OS === 'android') {
-    return InstagramShare.shareVideo(videoUri);
+    const fileUri = await ShareUtils.uriForFile(options.localFile);
+    return InstagramShare.shareVideo(fileUri);
   }
 }
 
@@ -34,7 +35,8 @@ async function sharePhoto(options: any) {
   if (Platform.OS === 'ios') {
     return Linking.openURL(`instagram://library?AssetPath=${options.localFile}`);
   } else if (Platform.OS === 'android') {
-    return InstagramShare.shareVideo(options.localFile);
+    const fileUri = await ShareUtils.uriForFile(options.localFile);
+    return InstagramShare.sharePhoto(fileUri);
   }
 }
 

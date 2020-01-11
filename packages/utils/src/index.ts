@@ -24,9 +24,17 @@ function prepareAssetPath(assetPath: string) {
   return assetPath;
 }
 
+function uriForFile(file: string): Promise<string> {
+  if (Platform.OS === 'ios') {
+    return Promise.resolve(file);
+  }
+  return ShareUtils.uriForFile(file);
+}
+
 export default {
   isAppInstalled,
   prepareAssetPath,
+  uriForFile,
 };
 
 export * from './error';
