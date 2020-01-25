@@ -1,43 +1,68 @@
-# react-native-core
+# @react-native-social-share/core
 
 ## Getting started
 
-`$ npm install react-native-core --save`
+`$ npm install @react-native-social-share/core --save`
 
 ### Mostly automatic installation
 
 `$ react-native link react-native-core`
 
-### Manual installation
+## Share via Facebook
+** Require: [react-native-fbsdk](https://github.com/facebook/react-native-fbsdk)
 
+## Share via Twitter
+** Require: [@react-native-social-share/twitter](https://github.com/r0b0t3d/react-native-social-share/tree/master/packages/twitter)
 
-#### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-core` and add `Core.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libCore.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
-
-#### Android
-
-1. Open up `android/app/src/main/java/[...]/MainApplication.java`
-  - Add `import com.reactlibrary.CorePackage;` to the imports at the top of the file
-  - Add `new CorePackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-core'
-  	project(':react-native-core').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-core/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-core')
-  	```
-
+## Share via Instagram
+** Require: [@react-native-social-share/instagram](https://github.com/r0b0t3d/react-native-social-share/tree/master/packages/instagram)
 
 ## Usage
 ```javascript
-import Core from 'react-native-core';
+import RNSocialShare from '@react-native-social-share/core';
 
-// TODO: What to do with the module?
-Core;
+RNSocialShare.shareLink("facebook", options);
 ```
+
+## Methods
+1. `shareLink(provider, options)`
+- provider: 'facebook' | 'twitter';
+- options:
+	+ link: string link to share
+	+ description: string (optional)
+	+ hashtag: string (optional) (Facebook and Twitter)
+	+ peopleIds: string[] (optional) (Facebook only) people ids to tag
+
+```
+const options = {
+	link: "https://github.com/r0b0t3d/react-native-social-share",
+	description: "React Native Social Share",
+	peopleIds: "",
+	hashtag: "#sharelink",
+};
+RNSocialShare.shareLink("facebook", options);
+```
+Note: Instagram do not support share link
+
+2. `sharePhoto(provider, options)`
+3. `shareVideo(provider, options)`
+- provider: 'facebook' | 'twitter' | 'instagram';
+- options:
+	+ localFile: string file to share
+	+ hashtag: string (optional) (Facebook and Twitter)
+	+ peopleIds: string[] (optional) (Facebook only) people ids to tag
+```
+import CameraRoll from '@react-native-community/
+
+const localFile = "";
+const uri = CameraRoll.save(localFile, { type: 'photo' });
+const options = {
+	localFile: uri,
+	peopleIds: "",
+	hashtag: "#sharefile",
+};
+RNSocialShare.sharePhoto("facebook", options);
+```
+
+Notes: `Facebook` and `Instagram` app must be installed
+

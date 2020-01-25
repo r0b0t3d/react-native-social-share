@@ -98,5 +98,7 @@ Add to AndroidManifest
 ```javascript
 import TwitterShare from '@react-native-social-share/twitter';
 
-TwitterShare.shareLink(link: string, description: string)
+const link = "";
+const description = "";
+TwitterShare.shareLink({ link, description });
 ```

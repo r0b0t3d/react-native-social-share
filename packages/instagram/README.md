@@ -2,37 +2,17 @@
 
 ## Getting started
 
-`$ npm install react-native-instagram --save`
+`$ npm install @react-native-social-share/instagram --save`
 
+or
+
+`$ yarn add @react-native-social-share/instagram`
+
+
+## For react-native < 0.60
 ### Mostly automatic installation
 
-`$ react-native link react-native-instagram`
-
-### Manual installation
-
-
-#### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-instagram` and add `Instagram.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libInstagram.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
-
-#### Android
-
-1. Open up `android/app/src/main/java/[...]/MainApplication.java`
-  - Add `import com.reactlibrary.InstagramPackage;` to the imports at the top of the file
-  - Add `new InstagramPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-instagram'
-  	project(':react-native-instagram').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-instagram/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-instagram')
-  	```
-
+`$ react-native link @react-native-social-share/instagram`
 
 ## Setup
 ### iOS
@@ -42,9 +22,20 @@ In order for your app to use Instagram's custom URL scheme, you mush whitelist t
 https://developers.facebook.com/docs/instagram/sharing-to-feed/
 
 ## Usage
+Instagram allows share files that are stored in library. So if you have an local file, you can first save it to library via `CameraRoll`
 ```javascript
-import InstagramShare from 'react-native-instagram';
+import CameraRoll from '@react-native-community/cameraroll';
 
-const videoUri = "";
-InstagramShare.shareVideo(videoUri);
+const localFile = "";
+const uri = CameraRoll.save(localFile, { type: 'photo' });
+```
+then
+```
+import InstagramShare from '@react-native-social-share/instagram';
+
+InstagramShare.shareVideo({ localFile: uri });
+
+// Or
+
+InstagramShare.sharePhoto({ localFile: uri });
 ```

@@ -12,7 +12,7 @@ async function shareLink(link: string, description: string) {
   throw new Error('Not available');
 }
 
-async function shareVideo(options: any) {
+async function shareVideo(options: { localFile: string }) {
   const isInstagramInstalled = await ShareUtils.isAppInstalled(appIdentifier);
   if (!isInstagramInstalled) {
     throw new SocialError('APP_NOT_INSTALLED', 'Instagram must be installed');
@@ -26,7 +26,7 @@ async function shareVideo(options: any) {
   }
 }
 
-async function sharePhoto(options: any) {
+async function sharePhoto(options: { localFile: string }) {
   const isInstagramInstalled = await ShareUtils.isAppInstalled(appIdentifier);
   if (!isInstagramInstalled) {
     throw new SocialError('APP_NOT_INSTALLED', 'Instagram must be installed');
