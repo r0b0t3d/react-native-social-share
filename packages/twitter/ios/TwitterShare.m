@@ -1,5 +1,6 @@
 #import "TwitterShare.h"
 #import <TwitterKit/TWTRKit.h>
+#import <React/RCTUtils.h>
 
 @implementation TwitterShare
 
@@ -21,8 +22,7 @@ RCT_EXPORT_METHOD(shareLink:(NSString *)url
   [composer setText:description];
   [composer setURL:[NSURL URLWithString:url]];
   
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-  UIViewController *topViewController = [self topViewControllerWithRootViewController:rootViewController];
+  UIViewController *topViewController = RCTPresentedViewController();
   // Called from a UIViewController
   [composer showFromViewController:topViewController completion:^(TWTRComposerResult result) {
     if (result == TWTRComposerResultCancelled) {
@@ -43,8 +43,7 @@ RCT_EXPORT_METHOD(sharePhoto:(NSString *)url
   [composer setText:description];
   [composer setImage:[UIImage imageWithContentsOfFile:url]];
   
-  UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
-  UIViewController *topViewController = [self topViewControllerWithRootViewController:rootViewController];
+  UIViewController *topViewController = RCTPresentedViewController();
   // Called from a UIViewController
   [composer showFromViewController:topViewController completion:^(TWTRComposerResult result) {
     if (result == TWTRComposerResultCancelled) {
@@ -55,19 +54,36 @@ RCT_EXPORT_METHOD(sharePhoto:(NSString *)url
   }];
 }
 
-- (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
-  if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-    UITabBarController* tabBarController = (UITabBarController*)rootViewController;
-    return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
-  } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-    UINavigationController* navigationController = (UINavigationController*)rootViewController;
-    return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
-  } else if (rootViewController.presentedViewController) {
-    UIViewController* presentedViewController = rootViewController.presentedViewController;
-    return [self topViewControllerWithRootViewController:presentedViewController];
-  } else {
-    return rootViewController;
-  }
+
+RCT_EXPORT_METHOD(shareVideo:(NSString *)url
+                  description:(NSString *)description
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSURL *videoURL = [NSURL URLWithString:url];
+  UIImage *thumbnail = [self videoThumbnail:videoURL];
+  NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+  TWTRComposerViewController *composer = [[TWTRComposerViewController alloc] initWithInitialText:description image:thumbnail videoData:videoData];
+  
+  UIViewController *topViewController = RCTPresentedViewController();
+  // Called from a UIViewController
+  [topViewController presentViewController:composer animated:YES completion:nil];
+}
+
+- (UIImage*)videoThumbnail:(NSURL *)url
+{
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    generator.appliesPreferredTrackTransform = YES;
+    CMTime time = CMTimeMake(1, 30);
+    NSError *thumbnailError;
+    CGImageRef thumbnailFrame = [generator copyCGImageAtTime:time actualTime:nil error:&thumbnailError];
+    if (!thumbnailFrame) {
+        NSLog(@"Could not retrieve thumbnail from video URL: %@", thumbnailError);
+    }
+    UIImage *thumbnail = [UIImage imageWithCGImage:thumbnailFrame];
+
+    return thumbnail;
 }
 
 @end

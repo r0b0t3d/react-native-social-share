@@ -34,7 +34,20 @@ async function sharePhoto(options: ShareMediaOptions) {
   return TwitterShare.sharePhoto(fileUri, options.hashtag);
 }
 
+async function shareVideo(options: ShareMediaOptions) {
+  if (Platform.OS === 'android') {
+    const isAppInstalled = await ShareUtils.isAppInstalled(appIdentifier);
+    if (!isAppInstalled) {
+      throw new SocialError('APP_NOT_INSTALLED', 'Twitter must be installed');
+    }
+  }
+
+  const fileUri = await ShareUtils.uriForFile(options.localFile);
+  return TwitterShare.shareVideo(fileUri, options.hashtag);
+}
+
 export default {
   shareLink,
   sharePhoto,
+  shareVideo,
 };

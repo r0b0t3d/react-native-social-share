@@ -36,9 +36,21 @@ async function shareVideo(options: ShareMediaOptions) {
   const { ShareDialog } = FBSDK;
   const shareContent = {
     contentType: 'video',
-    video: { localUrl: options.assetId },
+    video: { localUrl: options.localFile },
+    commonParameters: {
+      peopleIds: options.peopleIds,
+      hashtag: options.hashtag,
+    },
   };
-  return ShareDialog.show(shareContent);
+  ShareDialog.setMode('native');
+  const isAppInstalled = await ShareUtils.isAppInstalled(appIdentifier);
+  if (!isAppInstalled) {
+    throw new SocialError('APP_NOT_INSTALLED', 'Facebook app must be installed');
+  }
+  if (ShareDialog.canShow(shareContent)) {
+    return ShareDialog.show(shareContent);
+  }
+  throw new Error('Failed');
 }
 
 async function sharePhoto(options: ShareMediaOptions) {
