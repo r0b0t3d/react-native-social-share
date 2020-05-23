@@ -60,9 +60,11 @@ RCT_EXPORT_METHOD(shareVideo:(NSString *)url
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-  NSURL *videoURL = [NSURL URLWithString:url];
+  NSURL *videoURL = [NSURL fileURLWithPath:url];
   UIImage *thumbnail = [self videoThumbnail:videoURL];
-  NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
+  NSError* error;
+  NSData *videoData = [NSData dataWithContentsOfURL:videoURL options:NSDataReadingUncached error:&error];
+  
   TWTRComposerViewController *composer = [[TWTRComposerViewController alloc] initWithInitialText:description image:thumbnail videoData:videoData];
   
   UIViewController *topViewController = RCTPresentedViewController();
@@ -72,18 +74,18 @@ RCT_EXPORT_METHOD(shareVideo:(NSString *)url
 
 - (UIImage*)videoThumbnail:(NSURL *)url
 {
-    AVAsset *asset = [AVAsset assetWithURL:url];
-    AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    generator.appliesPreferredTrackTransform = YES;
-    CMTime time = CMTimeMake(1, 30);
-    NSError *thumbnailError;
-    CGImageRef thumbnailFrame = [generator copyCGImageAtTime:time actualTime:nil error:&thumbnailError];
-    if (!thumbnailFrame) {
-        NSLog(@"Could not retrieve thumbnail from video URL: %@", thumbnailError);
-    }
-    UIImage *thumbnail = [UIImage imageWithCGImage:thumbnailFrame];
+  AVURLAsset *asset = [AVURLAsset assetWithURL:url];
+  AVAssetImageGenerator *generator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+  generator.appliesPreferredTrackTransform = YES;
+  CMTime time = CMTimeMake(1, 30);
+  NSError *thumbnailError;
+  CGImageRef thumbnailFrame = [generator copyCGImageAtTime:time actualTime:nil error:&thumbnailError];
+  if (!thumbnailFrame) {
+      NSLog(@"Could not retrieve thumbnail from video URL: %@", thumbnailError);
+  }
+  UIImage *thumbnail = [UIImage imageWithCGImage:thumbnailFrame];
 
-    return thumbnail;
+  return thumbnail;
 }
 
 @end
