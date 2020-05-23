@@ -1,5 +1,5 @@
 export type ShareMediaOptions = {
-  localFile: string;
+  localFile?: string;
   assetId?: string;
   album?: string;
   hashtag?: string;

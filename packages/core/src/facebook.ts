@@ -3,6 +3,7 @@ import { ShareMediaOptions, ShareLinkOptions } from './types';
 import { Platform } from 'react-native';
 // @ts-ignore
 import ShareUtils, { SocialError } from '@react-native-social-share/utils';
+import { prepareAssetPath } from './utils';
 
 let FBSDK: any = null;
 try {
@@ -36,7 +37,7 @@ async function shareVideo(options: ShareMediaOptions) {
   const { ShareDialog } = FBSDK;
   const shareContent = {
     contentType: 'video',
-    video: { localUrl: options.localFile },
+    video: { localUrl: prepareAssetPath(options.assetId!) },
     commonParameters: {
       peopleIds: options.peopleIds,
       hashtag: options.hashtag,
@@ -57,7 +58,7 @@ async function sharePhoto(options: ShareMediaOptions) {
   const { ShareDialog } = FBSDK;
   const shareContent = {
     contentType: 'photo',
-    photos: [{ imageUrl: options.localFile, userGenerated: true }],
+    photos: [{ imageUrl: options.assetId, userGenerated: true }],
     commonParameters: {
       peopleIds: options.peopleIds,
       hashtag: options.hashtag,

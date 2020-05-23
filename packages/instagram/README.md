@@ -25,17 +25,11 @@ https://developers.facebook.com/docs/instagram/sharing-to-feed/
 Instagram allows share files that are stored in library. So if you have an local file, you can first save it to library via `CameraRoll`
 ```javascript
 import CameraRoll from '@react-native-community/cameraroll';
-
-const localFile = "";
-const uri = CameraRoll.save(localFile, { type: 'photo' });
-```
-then
-```
 import InstagramShare from '@react-native-social-share/instagram';
 
-InstagramShare.shareVideo({ localFile: uri });
+const localFile = "";
+const assetId = CameraRoll.save(localFile, { type: 'photo' });
 
-// Or
-
-InstagramShare.sharePhoto({ localFile: uri });
+InstagramShare.shareVideo({ assetId });
+InstagramShare.sharePhoto({ assetId });
 ```

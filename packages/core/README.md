@@ -48,20 +48,23 @@ Note: Instagram do not support share link
 3. `shareVideo(provider, options)`
 - provider: 'facebook' | 'twitter' | 'instagram';
 - options:
-	+ localFile: string file to share
+	+ localFile: string local file to share (required for Twitter sharing)
+	+ assetId: string assetId after saving to camera roll (required for Facebook & Instagram)
 	+ hashtag: string (optional) (Facebook and Twitter)
 	+ peopleIds: string[] (optional) (Facebook only) people ids to tag
 ```
 import CameraRoll from '@react-native-community/
 
-const localFile = "";
-const uri = CameraRoll.save(localFile, { type: 'photo' });
+const localFile = "path/to/local/file";
+const assetId = CameraRoll.save(localFile, { type: 'photo' });
 const options = {
-	localFile: uri,
+	localFile,
+	assetId,
 	peopleIds: "",
 	hashtag: "#sharefile",
 };
 RNSocialShare.sharePhoto("facebook", options);
+RNSocialShare.shareVideo("facebook", options);
 ```
 
 Notes: `Facebook` and `Instagram` app must be installed

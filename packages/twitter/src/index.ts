@@ -30,7 +30,7 @@ async function sharePhoto(options: ShareMediaOptions) {
     }
   }
 
-  const fileUri = await ShareUtils.uriForFile(options.localFile);
+  const fileUri = await ShareUtils.uriForFile(options.assetId);
   return TwitterShare.sharePhoto(fileUri, options.hashtag);
 }
 

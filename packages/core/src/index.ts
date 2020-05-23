@@ -39,10 +39,7 @@ function shareLink(provider: SocialProvider, options: ShareLinkOptions) {
 function shareVideo(provider: SocialProvider, options: ShareMediaOptions): Promise<void> {
   const socialShare = getSocialProvider(provider);
   if (socialShare) {
-    return socialShare.shareVideo({
-      ...options,
-      localFile: prepareAssetPath(options.localFile),
-    });
+    return socialShare.shareVideo(options);
   }
   return Promise.resolve();
 }
