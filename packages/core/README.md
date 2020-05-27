@@ -69,3 +69,4 @@ RNSocialShare.shareVideo("facebook", options);
 
 Notes: `Facebook` and `Instagram` app must be installed
 
+Twitter video limitation: https://github.com/twitter-archive/twitter-kit-ios/wiki/Compose-Tweets#video-requirements
