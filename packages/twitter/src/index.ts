@@ -30,6 +30,9 @@ async function sharePhoto(options: ShareMediaOptions) {
     }
   }
 
+  if (!options.assetId) {
+    throw new SocialError('MISSING_PROPERTY', 'assetId is required');
+  }
   const fileUri = await ShareUtils.uriForFile(options.assetId);
   return TwitterShare.sharePhoto(fileUri, options.hashtag);
 }
@@ -42,6 +45,9 @@ async function shareVideo(options: ShareMediaOptions) {
     }
   }
 
+  if (!options.assetId) {
+    throw new SocialError('MISSING_PROPERTY', 'assetId is required');
+  }
   const fileUri = await ShareUtils.uriForFile(options.localFile);
   return TwitterShare.shareVideo(fileUri, options.hashtag);
 }

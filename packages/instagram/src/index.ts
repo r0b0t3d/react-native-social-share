@@ -21,6 +21,9 @@ async function shareVideo(options: { assetId: string }) {
   if (Platform.OS === 'ios') {
     return Linking.openURL(`instagram://library?AssetPath=${options.assetId}`);
   } else if (Platform.OS === 'android') {
+    if (!options.assetId) {
+      throw new SocialError('MISSING_PROPERTY', 'assetId is required');
+    }
     const fileUri = await ShareUtils.uriForFile(options.assetId);
     return InstagramShare.shareVideo(fileUri);
   }
@@ -35,6 +38,9 @@ async function sharePhoto(options: { assetId: string }) {
   if (Platform.OS === 'ios') {
     return Linking.openURL(`instagram://library?AssetPath=${options.assetId}`);
   } else if (Platform.OS === 'android') {
+    if (!options.assetId) {
+      throw new SocialError('MISSING_PROPERTY', 'assetId is required');
+    }
     const fileUri = await ShareUtils.uriForFile(options.assetId);
     return InstagramShare.sharePhoto(fileUri);
   }
