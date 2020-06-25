@@ -25,7 +25,7 @@ function prepareAssetPath(assetPath: string) {
 }
 
 function uriForFile(file: string): Promise<string> {
-  if (!file) return Promise.resolve("");
+  if (!file) return Promise.resolve('');
   if (Platform.OS === 'ios') {
     return Promise.resolve(file);
   }
