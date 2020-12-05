@@ -94,6 +94,11 @@ Add to AndroidManifest
     android:name="com.twitter.sdk.android.CONSUMER_SECRET"
     android:value="consumerSecret" />
 ```
+
+## Decrease ios bundle size
+Twitter SDK contains some large resources used for feed.
+If you just need share/login function, you can follow this instruction to remove https://github.com/twitter-archive/twitter-kit-ios/issues/55
+
 ## Usage
 ```javascript
 import TwitterShare from '@react-native-social-share/twitter';

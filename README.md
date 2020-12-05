@@ -17,6 +17,17 @@
 ## Share via Instagram
 ** Require: [@react-native-social-share/instagram](https://github.com/r0b0t3d/react-native-social-share/tree/master/packages/instagram)
 
+## Setup optional dependencies
+
+In your metro.config.js
+```
+module.exports = {
+  transformer: {
+    allowOptionalDependencies: true, // <-- Add this
+  },
+}
+```
+
 ## Usage
 ```javascript
 import RNSocialShare from '@react-native-social-share/core';

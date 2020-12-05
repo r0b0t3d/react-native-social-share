@@ -1,12 +1,11 @@
 {
   "name": "@react-native-social-share/utils",
   "title": "React Native Share Utils",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
-    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/utils/",
-    "build": "rm -rf lib && tsc && yarn deploy",
+    "build": "rm -rf lib && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint src/**/*.ts",
     "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}' ",
