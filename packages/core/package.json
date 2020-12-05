@@ -3,10 +3,8 @@
   "title": "React Native Core",
   "version": "1.1.0",
   "description": "TODO",
-  "main": "lib/index.js",
+  "main": "src/index",
   "scripts": {
-    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/core/",
-    "build": "rm -rf lib && tsc && yarn deploy",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint src/**/*.ts",
     "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}' ",
