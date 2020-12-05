@@ -1,5 +1,4 @@
 import { SocialProvider, SocialShare, ShareMediaOptions, ShareLinkOptions } from './types';
-import { prepareAssetPath } from './utils';
 
 let Facebook: SocialShare | null;
 let Twitter: SocialShare | null;
