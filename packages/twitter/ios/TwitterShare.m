@@ -95,7 +95,11 @@ RCT_EXPORT_METHOD(shareVideo:(NSString *)url
             TWTRComposerViewController *composer = [[TWTRComposerViewController alloc] initWithInitialText:description image:thumbnail videoData:videoData];
             [topViewController presentViewController:composer animated:YES completion:nil];
           } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Twitter Accounts Available" message:@"You must log in before presenting a composer." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Twitter App or Accounts Available" message:@"You must install the app and log in before sharing to Twitter." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+               NSLog(@"OK");
+            }];
+            [alert addAction:okAction];
             [topViewController presentViewController:alert animated:YES completion:nil];
           }
         }];
