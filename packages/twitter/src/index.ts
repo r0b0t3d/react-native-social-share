@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import { NativeModules, Platform } from 'react-native';
 // @ts-ignore

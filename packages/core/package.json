@@ -6,7 +6,7 @@
   "main": "src/index",
   "scripts": {
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src/**/*.ts",
     "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}' ",
     "test": "jest --config jestconfig.json --passWithNoTests",

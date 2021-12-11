@@ -5,9 +5,8 @@
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
-    "deploy": "cp -R lib ../../../outdoorvideo-app/node_modules/@react-native-social-share/instagram/",
-    "build": "rm -rf lib && tsc && yarn deploy",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "build": "rm -rf lib && tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src/**/*.ts",
     "fix-code": "prettier-eslint --write 'src/**/*.{ts,tsx}' ",
     "test": "jest --config jestconfig.json --passWithNoTests",
